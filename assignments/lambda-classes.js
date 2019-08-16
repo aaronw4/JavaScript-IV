@@ -23,8 +23,8 @@ class Instructor extends Person {
         console.log( `Today we are learning about ${subject}.`);
     }
 
-    grade(student){
-        console.log(`${student} receives a perfect score on ${subject}`);
+    grade(obj, subject){
+        console.log(`${obj.name} receives a perfect score on ${subject}`);
     }
 }
 
@@ -45,6 +45,22 @@ class Student extends Person {
     }
 
     sprintChallenge(subject) {
-        console.log(`${this.name} has begun spring challenge on ${subject}.`);
+        console.log(`${this.name} has begun sprint challenge on ${subject}.`);
+    }
+}
+
+class ProjectManager extends Instructor {
+    constructor(attr) {
+        super(attr);
+        this.gradClassName = attr.gradClassName;
+        this.favInstructor = attr.favInstructor;
+    }
+    
+    standUp(channel) {
+        console.log(`${this.name} announces to ${channel}, @channel standy times!​​​​​`)
+    }
+
+    debugsCode(obj, subject) {
+        console.log(`${this.name} debugs ${obj.name}'s code on ${subject}`)
     }
 }
