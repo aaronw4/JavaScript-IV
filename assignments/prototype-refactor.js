@@ -43,17 +43,56 @@ Humanoid.prototype.greet = function() {
 2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
 
 */
+class GameObject {
+    constructor(attrs) {
+    this.createdAt = attrs.createdAt;
+    this.name = attrs.name;
+    this.dimensions = attrs.dimensions; 
+    }
+    
+    destroy() {
+        return `${this.name} was removed from the game.`;
+  }
+}
 
 
-const mage = new Humanoid({
+class CharacterStats extends GameObject {
+    constructor(attrs) {
+        super(attrs);    
+        this.healthPoints = attrs.healthPoints;
+    }
+
+    takeDamage() {
+        return `${this.name} took damage.`;
+    }
+  }
+  
+
+
+  class Humanoid extends CharacterStats{
+      constructor(attrs) {
+        super(attrs);    
+        this.team = attrs.team;
+        this.weapons = attrs.weapons;
+        this.language = attrs.language; 
+      } 
+
+      greet() {
+        return `${this.name} offers a greeting in ${this.language}`;
+      }
+  } 
+  
+ 
+
+  const mage = new Humanoid({
     createdAt: new Date(),
+    name: 'Bruce',
     dimensions: {
       length: 2,
       width: 1,
       height: 1,
     },
     healthPoints: 5,
-    name: 'Bruce',
     team: 'Mage Guild',
     weapons: [
       'Staff of Shamalama',
@@ -94,6 +133,7 @@ const mage = new Humanoid({
     ],
     language: 'Elvish',
   });
+
 
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
