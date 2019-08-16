@@ -123,3 +123,12 @@ const fred = new Instructor({
       className: 'Webpt11',
       favSubjects: 'CSS'
   });
+
+aaron.speak();
+fred.demo('prototypes');
+worf.grade(aaron,'JavaScript');
+david.listSubjects();
+david.PRAssignment('Doctor Web Page');
+aaron.sprintChallenge('JavaScript');
+flash.standUp('WebPT9_Barry');
+data.debugsCode(david, 'JavaScript IV Project');
