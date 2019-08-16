@@ -26,6 +26,13 @@ class Instructor extends Person {
     grade(obj, subject){
         console.log(`${obj.name} receives a perfect score on ${subject}`);
     }
+
+    score(obj) {
+        let num = Math.random();
+        let change = Math.ceil((20*num) - 10);
+        obj.grade = obj.grade + change;
+        console.log(`${obj.name}, your grade is now a ${obj.grade}`);
+    }
 }
 
 class Student extends Person {
@@ -34,6 +41,7 @@ class Student extends Person {
         this.previousBackground = attr.previousBackground;
         this.className = attr.className;
         this.favSubjects = attr.favSubjects;
+        this.grade = attr.grade;
     }
 
     listSubjects() {
@@ -47,6 +55,15 @@ class Student extends Person {
     sprintChallenge(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}.`);
     }
+
+    graduate() {
+        if (this.grade >= 70) {
+            console.log(`Congratulations ${this.name}, you are ready to graduate.`);
+        }
+        else {
+            console.log(`Sorry ${this.name}, you are not ready to graduate.`);
+        }
+    }
 }
 
 class ProjectManager extends Instructor {
@@ -57,7 +74,7 @@ class ProjectManager extends Instructor {
     }
     
     standUp(channel) {
-        console.log(`${this.name} announces to ${channel}, @channel standy times!​​​​​`)
+        console.log(`${this.name} announces to ${channel}, @channel standy time!​​​​​`)
     }
 
     debugsCode(obj, subject) {
@@ -112,16 +129,18 @@ const fred = new Instructor({
     age: 42,
     previousBackground: 'Teacher',
     className: 'Webpt9',
-    favSubjects: '.Less'  
+    favSubjects: '.Less',  
+    grade: 90
   });
 
   const david = new Student({
-      name: 'David',
-      location: 'Fremont',
-      age: 34,
-      previousBackground: 'Human Resources',
-      className: 'Webpt11',
-      favSubjects: 'CSS'
+    name: 'David',
+    location: 'Fremont',
+    age: 34,
+    previousBackground: 'Human Resources',
+    className: 'Webpt11',
+    favSubjects: 'CSS',
+    grade: 59
   });
 
 aaron.speak();
@@ -132,3 +151,6 @@ david.PRAssignment('Doctor Web Page');
 aaron.sprintChallenge('JavaScript');
 flash.standUp('WebPT9_Barry');
 data.debugsCode(david, 'JavaScript IV Project');
+fred.score(david);
+aaron.graduate();
+david.graduate();
